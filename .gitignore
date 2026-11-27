@@ -1,0 +1,12 @@
+*.aux
+*.log
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+.DS_Store
+
+# the desktop app drops files it delivers into the connected folder;
+# they are not part of the site
+Claude outputs/

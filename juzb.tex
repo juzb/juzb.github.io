@@ -1,0 +1,796 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Simple LaTeX CV Template %%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% NOTE: If you find that it says                                     %%
+%%                                                                    %%
+%%                           1 of ??                                  %%
+%%                                                                    %%
+%% at the bottom of your first page, this means that the AUX file     %%
+%% was not available when you ran LaTeX on this source. Simply RERUN  %%
+%% LaTeX to get the ``??'' replaced with the number of the last page  %%
+%% of the document. The AUX file will be generated on the first run   %%
+%% of LaTeX and used on the second run to fill in all of the          %%
+%% references.                                                        %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document Setup %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Don't like 10pt? Try 11pt or 12pt
+\documentclass[9pt]{extarticle}
+% cmap writes a proper ToUnicode map, so copying text out of the PDF
+% (or an applicant-tracking system parsing it) gets 'Straße', not 'Straÿe'
+\usepackage{cmap}
+\RequirePackage[T1]{fontenc}
+
+% LaTeX will typeset using Computer Modern Roman, which a lot of
+% non-mathematicians and non-engineers won't like. Also, a few PDF
+% viewers may not render CMR very well. Instead, Times New Roman can
+% be used. That's what this package does.
+%\usepackage{times}
+
+% The automated optical recognition software used to digitize resume
+% information works best with fonts that do not have serifs. This
+% command uses a sans serif font throughout. Uncomment both lines (or at
+% least the second) to restore a Roman font (i.e., a font with serifs).
+% (NOTE: This requires the times package above)
+%\renewcommand{\familydefault}{\sfdefault}
+
+% This is a helpful package that puts math inside length specifications
+\usepackage{calc}
+
+% This package helps LaTeX auto-hyphenate hyphenated words if you use
+% special hyphens. For example, bio\-/mimicry will properly hyphenate
+% ``mimicry'' if necessary.
+\usepackage[shortcuts]{extdash}
+
+% Layout: Puts the section titles on left side of page
+\reversemarginpar
+
+%
+%         PAPER SIZE, PAGE NUMBER, AND DOCUMENT LAYOUT NOTES:
+%
+% The next \usepackage line changes the layout for CV style section
+% headings as marginal notes. It also sets up the paper size as either
+% letter or A4. By default, letter was used. If A4 paper is desired,
+% comment out the letterpaper lines and uncomment the a4paper lines.
+%
+% As you can see, the margin widths and section title widths can be
+% easily adjusted.
+%
+% ALSO: Notice that the includefoot option can be commented OUT in order
+% to put the PAGE NUMBER *IN* the bottom margin. This will make the
+% effective text area larger.
+%
+% IF YOU WISH TO REMOVE THE ``of LASTPAGE'' next to each page number,
+% see the note about the +LP and -LP lines below. Comment out the +LP
+% and uncomment the -LP.
+%
+% IF YOU WISH TO REMOVE PAGE NUMBERS, be sure that the includefoot line
+% is uncommented and ALSO uncomment the \pagestyle{empty} a few lines
+% below.
+%
+
+%% Use these lines for letter-sized paper
+\usepackage[paper=a4paper,
+            % includefoot, % Uncomment to put page number above margin
+            marginparwidth=0.9in,     % Length of section titles
+            marginparsep=.03in,       % Space between titles and text
+            margin=0.7in,               % 1 inch margins
+            includemp]{geometry}
+
+%% Use these lines for A4-sized paper
+%\usepackage[paper=a4paper,
+%            %includefoot, % Uncomment to put page number above margin
+%            marginparwidth=30.5mm,    % Length of section titles
+%            marginparsep=1.5mm,       % Space between titles and text
+%            margin=25mm,              % 25mm margins
+%            includemp]{geometry}
+
+%% More layout: Get rid of indenting throughout entire document
+\setlength{\parindent}{0in}
+
+% Provides special list environments and macros to create new ones
+\usepackage[shortlabels]{enumitem}
+
+% Simpler bibsections for CV sections
+% (thanks to natbib for inspiration)
+%
+% * For lists of references with hanging indents and no numbers:
+%
+%   \begin{bibsection}
+%       \item ...
+%   \end{bibsection}
+%
+% * For numbered lists of references (with hanging indents):
+%
+%   \begin{bibenum}
+%       \item ...
+%   \end{bibenum}
+%
+%   Note that bibenum numbers continuously throughout. To reset the
+%   counter, use
+%
+%   \restartlist{bibenum}
+%
+%   at the place where you want the numbering to reset.
+
+\makeatletter
+\newlength{\bibhang}
+\setlength{\bibhang}{1em}
+\newlength{\bibsep}
+ {\@listi \global\bibsep\itemsep \global\advance\bibsep by\parsep}
+\newlist{bibsection}{itemize}{3}
+\setlist[bibsection]{label=,leftmargin=\bibhang,%
+        itemindent=-\bibhang,
+        itemsep=\bibsep,parsep=\z@,partopsep=0pt,
+        topsep=0pt}
+\newlist{bibenum}{enumerate}{3}
+\setlist[bibenum]{label=[\arabic*],resume,leftmargin={\bibhang+\widthof{[999]}},%
+        itemindent=-\bibhang,
+        itemsep=\bibsep,parsep=\z@,partopsep=0pt,
+        topsep=0pt}
+\let\oldendbibenum\endbibenum
+\def\endbibenum{\oldendbibenum\vspace{-.6\baselineskip}}
+\let\oldendbibsection\endbibsection
+\def\endbibsection{\oldendbibsection\vspace{-.6\baselineskip}}
+\makeatother
+
+%% Reference the last page in the page number
+%
+% NOTE: comment the +LP line and uncomment the -LP line to have page
+%       numbers without the ``of ##'' last page reference)
+%
+% NOTE: uncomment the \pagestyle{empty} line to get rid of all page
+%       numbers (make sure includefoot is commented out above)
+%
+\usepackage{fancyhdr,lastpage}
+\pagestyle{fancy}
+\pagestyle{empty}      % Uncomment this to get rid of page numbers
+\fancyhf{}\renewcommand{\headrulewidth}{0pt}
+\fancyfootoffset{\marginparsep+\marginparwidth}
+\newlength{\footpageshift}
+\setlength{\footpageshift}
+          {0.5\textwidth+0.5\marginparsep+0.5\marginparwidth-2in}
+\lfoot{\hspace{\footpageshift}%
+       \parbox{4in}{\, \hfill %
+                    \arabic{page} of \protect\pageref*{LastPage} % +LP
+%                    \arabic{page}                               % -LP
+                    \hfill \,}}
+
+% Finally, give us PDF bookmarks
+\usepackage{color,hyperref}
+\definecolor{darkblue}{rgb}{0.0,0.0,0.3}
+% \hypersetup{colorlinks,breaklinks,
+%             linkcolor=darkblue,urlcolor=darkblue,
+%             anchorcolor=darkblue,citecolor=darkblue}
+
+\definecolor{black}{rgb}{0.0,0.0,0.0}
+\hypersetup{colorlinks,breaklinks,
+            linkcolor=black,urlcolor=black,
+            anchorcolor=black,citecolor=black}
+
+%%%%%%%%%%%%%%%%%%%%%%%% End Document Setup %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%% Helper Commands %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% HEADING AT TOP OF CURRICULUM VITAE
+
+% The title (name) with a horizontal rule under it
+% (optional argument typesets an object right-justified across from name
+%  as well)
+%
+% Usage: \makeheading{name}
+%        OR
+%        \makeheading[right_object]{name}
+%
+% Place at top of document. It should be the first thing.
+% If ``right_object'' is provided in the square-braced optional
+% argument, it will be right justified on the same line as ``name'' at
+% the top of the CV. For example:
+%
+%       \makeheading[\emph{Curriculum vitae}]{Your Name}
+%
+% will put an emphasized ``Curriculum vitae'' at the top of the document
+% as a title. Likewise, a picture could be included:
+%
+%   \makeheading[{\includegraphics[height=1.5in]{my_picture}}]{Your Name}
+%
+% the picture will be flush right across from the name. For this example
+% to work, make sure the extra set of curly braces is included. Also
+% makes ure that \usepackage{graphicx} is somewhere in the preamble.
+\newcommand{\makeheading}[2][]%
+        {\hspace*{-\marginparsep minus \marginparwidth}%
+         \begin{minipage}[t]{\textwidth+\marginparwidth+\marginparsep}%
+             {\Large \bfseries #2 \hfill #1}\\[-0.15\baselineskip]%
+                 \rule{\columnwidth}{1pt}%
+         \end{minipage}}
+
+%%% SECTION HEADINGS
+
+% The section headings. Flush left in small caps down pseudo-margin.
+%
+% Usage: \section{section name}
+\renewcommand{\section}[1]{\pagebreak[3]%
+    \vspace{1.1\baselineskip}%
+    \phantomsection\addcontentsline{toc}{section}{#1}%
+    \noindent\llap{\scshape\smash{\parbox[t]{\marginparwidth}{\hyphenpenalty=10000\raggedright #1}}}%
+    \vspace{-\baselineskip}\par}
+
+%%% LISTS
+
+% This macro alters a list by removing some of the space that follows the list
+% (is used by lists below)
+\newcommand*\fixendlist[1]{%
+    \expandafter\let\csname preFixEndListend#1\expandafter\endcsname\csname end#1\endcsname
+    \expandafter\def\csname end#1\endcsname{\csname preFixEndListend#1\endcsname\vspace{-0.6\baselineskip}}}
+
+% These macros help ensure that items in outer-type lists do not get
+% separated from the next line by a page break
+% (they are used by lists below)
+\let\originalItem\item
+\newcommand*\fixouterlist[1]{%
+    \expandafter\let\csname preFixOuterList#1\expandafter\endcsname\csname #1\endcsname
+    \expandafter\def\csname #1\endcsname{\let\oldItem\item\def\item{\pagebreak[2]\oldItem}\csname preFixOuterList#1\endcsname}
+    \expandafter\let\csname preFixOuterListend#1\expandafter\endcsname\csname end#1\endcsname
+    \expandafter\def\csname end#1\endcsname{\let\item\oldItem\csname preFixOuterListend#1\endcsname}}
+\newcommand*\fixinnerlist[1]{%
+    \expandafter\let\csname preFixInnerList#1\expandafter\endcsname\csname #1\endcsname
+    \expandafter\def\csname #1\endcsname{\let\oldItem\item\let\item\originalItem\csname preFixInnerList#1\endcsname}
+    \expandafter\let\csname preFixInnerListend#1\expandafter\endcsname\csname end#1\endcsname
+    \expandafter\def\csname end#1\endcsname{\csname preFixInnerListend#1\endcsname\let\item\oldItem}}
+
+% An itemize-style list with lots of space between items
+%
+% Usage:
+%   \begin{outerlist}
+%       \item ...    % (or \item[] for no bullet)
+%   \end{outerlist}
+\newlist{outerlist}{itemize}{3}
+    \setlist[outerlist]{label=\enskip\textbullet,leftmargin=*}
+    \fixendlist{outerlist}
+    \fixouterlist{outerlist}
+
+% An environment IDENTICAL to outerlist that has better pre-list spacing
+% when used as the first thing in a \section
+%
+% Usage:
+%   \begin{lonelist}
+%       \item ...    % (or \item[] for no bullet)
+%   \end{lonelist}
+\newlist{lonelist}{itemize}{3}
+    \setlist[lonelist]{label=\enskip\textbullet,leftmargin=*,partopsep=0pt,topsep=0pt}
+    \fixendlist{lonelist}
+    \fixouterlist{lonelist}
+
+% An itemize-style list with little space between items
+%
+% Usage:
+%   \begin{innerlist}
+%       \item ...    % (or \item[] for no bullet)
+%   \end{innerlist}
+\newlist{innerlist}{itemize}{3}
+    \setlist[innerlist]{label=\enskip\textbullet,leftmargin=*,parsep=0pt,itemsep=0pt,topsep=0pt,partopsep=0pt}
+    \fixinnerlist{innerlist}
+
+% An environment IDENTICAL to innerlist that has better pre-list spacing
+% when used as the first thing in a \section
+%
+% Usage:
+%   \begin{loneinnerlist}
+%       \item ...    % (or \item[] for no bullet)
+%   \end{loneinnerlist}
+\newlist{loneinnerlist}{itemize}{3}
+    \setlist[loneinnerlist]{label=\enskip\textbullet,leftmargin=*,parsep=0pt,itemsep=0pt,topsep=0pt,partopsep=0pt}
+    \fixendlist{loneinnerlist}
+    \fixinnerlist{loneinnerlist}
+
+%%% EXTRA SPACE
+
+% To add some paragraph space between lines.
+% This also tells LaTeX to preferably break a page on one of these gaps
+% if there is a needed pagebreak nearby.
+\newcommand{\blankline}{\quad\pagebreak[3]}
+\newcommand{\halfblankline}{\quad\vspace{-0.5\baselineskip}\pagebreak[3]}
+
+%%% FORMATTING MACROS
+
+% Provides a linked \doi{#1} that links doi:#1 to http://dx.doi.org/#1
+\usepackage{doi}
+% To change the text before the DOI, adjust this command
+%\renewcommand\doitext{doi:}
+
+% Provides a linked \url{#1} that doesn't require escape characters
+\usepackage{url}
+
+% You can adjust the style \url{} uses here:
+% (options are: same, rm, sf, tt; defaults to tt)
+\urlstyle{same}
+
+% For \email{ADDRESS}, links ADDRESS to the url mailto:ADDRESS
+% (uncomment to typeset the e\-/mail address in typewriter font;
+%  otherwise, will be typeset in the \urlstyle above)
+%\DeclareUrlCommand\emaillink{\urlstyle{tt}}
+\providecommand*\emaillink[1]{\nolinkurl{#1}}
+\providecommand*\email[1]{\href{mailto:#1}{\emaillink{#1}}}
+
+\providecommand\BibTeX{{B\kern-.05em{\sc i\kern-.025em b}\kern-.08em \TeX}}
+\providecommand\Matlab{\textsc{Matlab}}
+
+% Custom hyphenation rules for words that LaTeX has trouble with
+\hyphenation{bio-mim-ic-ry bio-in-spi-ra-tion re-us-a-ble pro-vid-er Media-Wiki}
+
+\newcommand{\isotoday}{\number\year-\ifnum\month<10 0\fi\number\month-\ifnum\day<10 0\fi\number\day}
+\newcommand{\nobold}[1]{#1}
+
+% Link the dissertation title in Education to its Refubium record?
+% This is a LaTeX switch rather than a %%% web block because it has to reach
+% the PDF as well as the page. \disslinkfalse prints the title unlinked.
+\newif\ifdisslink
+\disslinktrue
+\newcommand{\dissurl}{https://refubium.fu-berlin.de/handle/fub188/54365}
+\newcommand{\disstitle}[1]{\ifdisslink\href{\dissurl}{#1}\else#1\fi}
+
+% Omit the middle authors in the PDF. \shortauthorstrue replaces every author
+% from two positions after my own name onward with "et al.", except the ones
+% marked \corr. The web page always shows the full list: tools/tex2html.py
+% expands these macros away before it converts anything.
+%
+%   \corr{R. Eils.}         a corresponding author - never replaced
+%   \auetal{A, B, C, }      the first omitted run of an entry -> "et al., "
+%   \au{D, E, }             any further omitted run -> nothing
+%   \auetalend{A, B, C.}    an omitted run that ends the author list -> "et al."
+%   \ablong  \abshort{}     a line break that applies in one mode only
+%
+% \ablong is a control word, so it swallows the newline written after it.
+% In short mode the lines run together instead of breaking, and that eaten
+% newline was the space between them - so it puts one back, after \unskip in
+% case the line it joins was emptied by \au and a space is already pending.
+%
+% With the switch off every one of them prints its argument unchanged, so the
+% PDF is identical to one written without any of this markup.
+\newif\ifshortauthors
+% etal et al on / off
+\shortauthorsfalse % full authors
+% \shortauthorstrue % shorten author list in pdf to fit 2 pages 
+\newcommand{\corr}[1]{#1}
+\newcommand{\au}[1]{\ifshortauthors\else#1\fi}
+\newcommand{\auetal}[1]{\ifshortauthors\textit{et al.}, \else#1\fi}
+\newcommand{\auetalend}[1]{\ifshortauthors\textit{et al.}\else#1\fi}
+\newcommand{\ablong}{\ifshortauthors\unskip\space\else\\\fi}
+\newcommand{\abshort}{\ifshortauthors\\\fi}
+
+% Authors the short form never drops, however far down the list they sit.
+% tools/bib2tex.py marks each of them \corr when it writes the Publications
+% section; matching is by surname and first initial, folding umlauts, so
+% Bürgel here also catches B{\"u}rgel and Buergel in the .bib.
+\newcommand{\keepauthors}{%  % keeps them only at the end!
+  R. Eils, M. Pietzner, C. Langenberg, J. Deanfield, F. Theis, B. Wild,
+  D. Niopek, B. Correia, I. Lehmann, F. Meier, U. Landmesser, B. Ference,
+  A. Hilgendorff, H. Schiller, N. Ishaque, A. Joussen, O. Zeitz, T. Bürgel,
+  J. Steinfeldt, S. Hegselmann, T. Brinker}
+
+
+% A real column for the year, used by the two sections whose entries carry a
+% single year.  \yearcolumn narrows the text so every line wraps before the
+% column; \yr puts the year in a zero-width box at the start of an entry, so it
+% sits on the entry's first line however the title wraps.  Nothing in these
+% sections needs a hand-placed line break any more - TeX wraps inside the
+% column, in long and short author mode alike.
+\newlength{\yearcol}\setlength{\yearcol}{20pt}
+\newlength{\yeargap}\setlength{\yeargap}{6pt}
+\newcommand{\yearcolumn}{\setlength{\rightskip}{\dimexpr\yearcol+\yeargap\relax}%
+  \sloppy}   % hyperref inhibits hyphenation inside \href, so let TeX stretch instead
+\newcommand{\yr}[1]{\makebox[0pt][l]{\hspace{\dimexpr\linewidth-\yearcol\relax}%
+  \makebox[\yearcol][r]{#1}}\ignorespaces}
+
+%%%%%%%%%%%%%%%%%%%%%%%% End Helper Commands %%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%% Begin CV Document %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%% Web-only content (ignored by LaTeX) %%%%%%%%%%%%%%%
+% Everything between a "%%% BEGIN key" and "%%% END key" line is read by
+% tex2html.py and rendered on the web page. LaTeX never sees any of it.
+% Inline markup: **bold**, *italic*, [text](https://url). Blank comment
+% lines (a bare %) start a new paragraph.
+
+%%% BEGIN web.photo
+% juzb.jpg
+%%% END web.photo
+
+%%% BEGIN web.photo.alt
+% Portrait of Julius Upmeier zu Belzen
+%%% END web.photo.alt
+
+%%% BEGIN web.photo.credit
+% Photo: © BIH | Heidi Scherm 2026.
+%%% END web.photo.credit
+%  All rights reserved. Used with permission.
+
+%%% BEGIN web.intro
+% Postdoctoral researcher at the \href{https://www.bihealth.org/en/research/research-group/eils-lab-bih-digital-health-center}{Berlin Institute of Health at Charité -- Universitätsmedizin Berlin, in the Artificial Intelligence group of Roland Eils}.
+%
+% I am interested in machine learning of disease risks to improve our understanding of disease.
+% My doctoral research focused on interpretable neural network architectures to predict risks on individual-level genotypes.
+% In the future, I plan to focus on benchmarking and evaluating disease risk models in population cohorts to improve our understanding of what makes models work well, and improve reproducibility. 
+% Additionally, I am interested in multi-omics models, and the shared and complementary contributions of the different modalities to predictive performance.
+%
+% My doctorate, a Dr. rer. nat. in Bioinformatics, was awarded by the Freie Universität Berlin in 2026 for research carried out in the Artificial Intelligence group of Roland Eils at the Berlin Institute of Health at Charité -- Universitätsmedizin Berlin.
+% Before that, I completed a Master of Science and a Bachelor of Science in Molecular Biotechnology at the Ruprecht-Karls-Universität Heidelberg, Germany.
+%%% END web.intro
+
+%%% BEGIN web.links
+% \href{https://orcid.org/0000-0002-0966-4458}{ORCID}
+% \href{https://github.com/juzb}{GitHub}
+% \href{https://www.linkedin.com/in/julius-upmeier-zu-belzen-7520b5196/}{LinkedIn}
+% \href{https://bsky.app/profile/juliusuzb.bsky.social}{Bluesky}
+% \href{mailto:juliusupmeierzubelzen@gmail.com}{Email}
+%%% END web.links
+
+%%% BEGIN web.featured.title
+% An interpretable omnigenic neural network architecture for the human genome
+%%% END web.featured.title
+
+%%% BEGIN web.featured.url
+% https://www.medrxiv.org/content/10.64898/2026.07.28.26359187v2
+%%% END web.featured.url
+
+%%% BEGIN web.featured.repo
+% https://github.com/juzb/ogm
+%%% END web.featured.repo
+
+%%% BEGIN web.featured.venue
+% medRxiv preprint, posted 31 July 2026 · doi:10.64898/2026.07.28.26359187
+%%% END web.featured.venue
+
+%%% BEGIN web.featured.abstract
+% Genetic prediction of complex phenotypes typically relies on additive linear models, which scale well but cannot capture non-additive effects or deeply integrate molecular and clinical data. Domain-specific neural networks have driven advances in images, text, and other modalities, but genome-scale neural networks remain challenging because genotypes are sparse and high-dimensional, effective sample sizes are limited, and generic architectures lack interpretability. Here, we introduce the omnigenic neural network, a biologically structured architecture inspired by the omnigenic model of complex traits. The model learns hierarchical representations of biological processes, accommodates multimodal inputs, supports transfer learning, and enables multitask prediction. Models trained in the UK Biobank and evaluated in the All of Us cohort for ischemic heart disease, type 2 diabetes, and schizophrenia outperformed published PGS Catalog and PRS-CSx scores. A multitask model trained across 36 cardiovascular endpoints further outperformed corresponding single-phenotype models and baselines. The architecture provides systems-level interpretability by quantifying the contributions of biological processes, which were consistent with established disease mechanisms. It also captures non-linear interactions between variants. Analysis of these interactions using Integrated Hessians revealed patterns concordant with previously reported epistatic associations. Together, these findings establish the omnigenic neural network as a flexible framework for interpretable, multimodal, and multitask genomic prediction.
+%%% END web.featured.abstract
+
+%%% BEGIN web.featured.figure
+% featured.png
+%%% END web.featured.figure
+
+%%% BEGIN web.featured.caption
+% The omnigenic neural network architecture takes individual-level variant-dosage and covariate information, and first maps them to gene representations. 
+% From there, it maps to representations of biological processes with increasing levels of abstraction, and the final representation is used to predict the phenotype of interest. 
+% This architecture enables risk stratification as well as multi-modal and multi-task predictions. 
+% It is interpretable at the systems level, and shows feature interactions between variants. 
+%%% END web.featured.caption
+
+
+%%% ------------------------------------------------------------------
+%%% Legal notices. Each has its own on/off switch: set the .show block
+%%% to yes or no. Both off and no legal.html is written at all (and an
+%%% existing one is deleted). Anything other than yes/no is an error,
+%%% so a typo cannot quietly unpublish a notice.
+%%% ------------------------------------------------------------------
+
+%%% BEGIN web.impressum.show
+% yes
+%%% END web.impressum.show
+
+%%% BEGIN web.impressum
+% Julius Upmeier zu Belzen
+% Heidsieker Heide 66B
+% 33739 Bielefeld
+% [juliusupmeierzubelzen@gmail.com](mailto:juliusupmeierzubelzen@gmail.com)
+%%% END web.impressum
+
+%%% BEGIN web.privacy.show
+% yes
+%%% END web.privacy.show
+
+%%% BEGIN web.privacy
+% **Verantwortlicher** im Sinne der DSGVO ist Julius Upmeier zu Belzen, erreichbar unter der im Impressum genannten Anschrift und E-Mail-Adresse.
+%
+% **Diese Seite setzt keine Cookies**, bindet keine Schriftarten, Skripte, Analyse- oder Tracking-Dienste Dritter ein. Externe Adressen erscheinen ausschließlich als Links, denen Sie selbst folgen können.
+%
+% **Hosting.** Diese Website wird über GitHub Pages bereitgestellt. Beim Aufruf verarbeitet GitHub technisch erforderliche Verbindungsdaten, insbesondere die IP-Adresse; die Verarbeitung erfolgt auch in den USA. Rechtsgrundlage ist das berechtigte Interesse am sicheren Betrieb der Website (Art. 6 Abs. 1 lit. f DSGVO). Weitere Informationen finden Sie im [GitHub Privacy Statement](https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement).
+%
+% **Ihre Rechte.** Sie haben im Rahmen der gesetzlichen Voraussetzungen das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch sowie das Recht, sich bei einer Datenschutz-Aufsichtsbehörde zu beschweren.
+%%% END web.privacy
+
+
+%%% BEGIN web.viva.show
+% no
+%%% END web.viva.show
+
+%%% BEGIN web.viva
+% 
+% Julius Upmeier zu Belzen is a PostDoc working on benchmarking disease risk models and neural network architectures for the human genome. 
+% He is part of the AI in Life Sciences group led by Ben Wild in Roland Eils’ department at the Berlin Institute of Health at Charité – Universitätsmedizin Berlin, where he did his doctorate.
+% Julius studied Molecular Biotechnology at Heidelberg University from 2015 to 2020, specializing in bioinformatics and completing both his B.Sc. and M.Sc. there.
+% 
+%%% END web.viva
+
+
+%%%%%%%%%%%%%%%%%%%%%%%% End web-only content %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\makeheading[{\normalfont\normalsize \isotoday}]{Dr. rer. nat. Julius Upmeier zu Belzen}
+
+\section{Contact}
+
+
+\begin{tabular}[t]{@{}l@{}}
+\href{mailto:julius.upmeier@bih-charite.de}{julius.upmeier@bih-charite.de}\\
+\href{mailto:juliusupmeierzubelzen@gmail.com}{juliusupmeierzubelzen@gmail.com} 
+\end{tabular}
+\hfill
+\begin{tabular}[t]{@{}l@{}}
+\href{https://juzb.github.io}{juzb.github.io}\\
+\href{https://github.com/juzb/}{github.com/juzb}\\
+\href{https://orcid.org/0000-0002-0966-4458}{orcid.org/0000-0002-0966-4458}
+\end{tabular}
+\hfill
+\begin{tabular}[t]{@{}r@{}}
+German\\
+English
+\end{tabular}
+
+
+\section{Interests}
+statistical and complex trait genetics, polygenic risk prediction, interpretable deep learning for genomics,\\
+population cohorts (UK Biobank, All of Us), model benchmarking and evaluation, reproducibility
+
+\section{Currently}
+
+\textbf{Postdoctoral researcher} \hfill since 2026 \\
+Berlin Institute of Health at Charité -- Universitätsmedizin Berlin, \\
+Artificial Intelligence group of \href{https://www.bihealth.org/en/research/research-group/eils-lab-bih-digital-health-center}{Roland Eils}.
+
+
+\section{Education}
+
+\textbf{Dr. rer. nat. -- Bioinformatics}, \textit{summa cum laude} \hfill 2020--2026 \\
+\disstitle{An interpretable omnigenic neural network  architecture for the human genome} \\
+Freie Universität Berlin, Fachbereich Mathematik und Informatik, \\
+Berlin Institute of Health at Charité -- Universitätsmedizin Berlin. Supervisor: Roland Eils.
+\vspace{3pt}
+
+
+\textbf{Master of Science -- Molecular Biotechnology}  \hfill 2018--2020\\
+Specialisation in Bioinformatics. Ruprecht-Karls-Universität Heidelberg.
+\vspace{3pt}
+
+
+\textbf{Bachelor of Science -- Molecular Biotechnology} \hfill 2015--2018\\
+Specialisation in Bioinformatics. Ruprecht-Karls-Universität Heidelberg.
+\vspace{3pt}
+
+
+\section{Service}
+
+Elected as \textbf{Chair of the BIH-PhDNet} \hfill 2025--2026 \\
+Co-founded the network to foster scientific exchange among PhD students and strengthen \\
+their representation within the institute.
+
+\vspace{3pt}
+
+\textbf{Reviewer} for the Pacific Symposium on Biocomputing 2027. Co-reviewer for the \hfill since 2024\\
+Conference on Neural Information Processing Systems and Communications Medicine.
+
+\vspace{3pt}
+
+
+\vspace{3pt}
+
+Coordination of \textbf{access to the All of Us dataset} at Charité. \hfill 2024
+
+\vspace{3pt}
+
+\textbf{Co-organisation of the Girls'Day} at the BIH-Digital Health Center \hfill 2024\\
+One-day internship for girls from age 10 in technical professions.
+
+\vspace{3pt}
+
+Co-founding and coordination of the \textbf{Population Cohorts User Group} at Charité: \hfill  since 2023\\
+Monthly forum for collaboration on the use of UK Biobank, All of Us, and similar datasets.
+ 
+
+
+\section{Honours}
+Selection for participation in the \href{https://lpshg.com}{\textbf{Leena Peltonen School of Human Genomics}}. \hfill 2026 
+
+\vspace{3pt}
+
+Poster prize at the \textbf{Systems Biology of Human Disease} conference, Nashville. \hfill 2022
+
+\vspace{3pt}
+
+Selection for participation in the \href{https://www.lindau-nobel.org/}{\textbf{70th and 72nd Lindau Nobel Laureate Meetings}}. \hfill 2020
+
+\vspace{3pt}
+
+Selection for participation in the \href{https://www.heidelberg-laureate-forum.org/}{\textbf{8th Heidelberg Laureate Forum}}. \hfill 2020
+
+\vspace{3pt}
+
+Winner of the \href{https://falling-walls.com/lab}{\textbf{Falling Walls Lab Adlershof}}, science communication in a 3-minute pitch: \hfill 2019\\
+Breaking the wall of black boxes in biomedical artificial intelligence.
+
+\vspace{3pt}
+
+Scholarship by \href{https://www.sdw.org/}{\textbf{Stiftung der Deutschen Wirtschaft}} funded by the German Federal \hfill 2016--2020 \\
+Ministry of Education and Research.
+
+
+\section{Teaching}
+
+
+\textbf{Co-supervision} of 7 Bachelor's thesis projects and 7 Master's thesis projects at Ruprecht- \hfill 2020--2026\\
+Karls-Universität Heidelberg, Freie Universität Berlin, and Humboldt-Universität Berlin.
+\vspace{3pt}
+
+\textbf{Co-supervision} of 4 projects for software development project internships at Freie \hfill 2020--2024\\
+Universität Berlin.
+ 
+\vspace{3pt}
+
+\textbf{Seminar: Artificial Intelligence in Medicine}\hfill  2020--2022\\
+Four sessions on interpretable machine learning of protein function at Charité.
+
+
+\section{Internships}
+
+Two months at École Polytechnique Fédérale de Lausanne with Bruno E. Correia. \hfill 2018
+ 
+\vspace{3pt}
+
+Two months at BGI-Research in Shenzhen with Zhouchun Shang.\hfill 2018
+
+
+ 
+
+
+\section{Conferences}
+\yearcolumn
+
+
+\yr{2026}Talk: \href{https://lpshg.com}{\textbf{Leena Peltonen School of Human Genomics}}, Hinxton\\
+An interpretable neural network architecture for the human genome.
+
+\vspace{3pt}
+
+
+\yr{2025}Poster: \textbf{European Society of Human Genetics Conference}, Milan\\
+Interpretable neural network polygenic risk scores for common diseases.
+
+\vspace{3pt}
+
+\yr{2025}Talk: \textbf{Systems Biology of Human Disease}, Berlin\\
+Inference and application of a data-driven gene ontology with cell-type resolution across the body.
+\vspace{3pt}
+
+\yr{2025}Poster: \textbf{American Society of Human Genetics Conference}, Boston\\
+Neural network polygenic scores can improve interpretability and accuracy across cohorts by
+modelling nonlinear interactions.
+
+\vspace{3pt}
+
+
+\yr{2019}Talk: \textbf{Systems Biology of Human Disease}, Berlin\\
+Leveraging implicit knowledge in neural networks for functional dissection and engineering
+of proteins.
+
+
+\section{Publications}
+
+
+\yr{\href{https://doi.org/10.64898/2026.07.28.26359187}{2026}}\href{https://doi.org/10.64898/2026.07.28.26359187}{\nobold{An interpretable omnigenic neural network architecture for the human genome.}}\\
+\href{https://doi.org/10.64898/2026.07.28.26359187}{\textbf{J. Upmeier zu Belzen}, L. Arnoldt, }
+\href{https://doi.org/10.64898/2026.07.28.26359187}{\auetal{N. Hollmann, L. Herrmann, K. Nguyen, L. Eckhoff, L. Kohleick, S. Abou Ghaloun, H. Schmidt, }}
+\href{https://doi.org/10.64898/2026.07.28.26359187}{\corr{S. Hegselmann}, \corr{F. Theis}, \corr{T. Bürgel}, \corr{J. Steinfeldt}, \corr{B. Wild}, }
+\href{https://doi.org/10.64898/2026.07.28.26359187}{\corr{R. Eils}.}
+\href{https://doi.org/10.64898/2026.07.28.26359187}{\textit{medRxiv:2026.07.28.26359187}}
+\vspace{3pt}
+
+\yr{\href{https://doi.org/10.1016/j.landig.2025.100962}{2026}}\href{https://doi.org/10.1016/j.landig.2025.100962}{\nobold{A predictive atlas of disease onset from retinal fundus photographs: a modelling study using data from population-based cohorts.}}\\
+\href{https://doi.org/10.1016/j.landig.2025.100962}{T. Bürgel, L. Loock, J. Steinfeldt, N. Kronenberg, L. Hoffmann, S. Künzel, }
+\href{https://doi.org/10.1016/j.landig.2025.100962}{\textbf{J. Upmeier zu Belzen}, L. Arnoldt, \auetal{A. Khawaja, R. Luben, P. Foster, }}
+\href{https://doi.org/10.1016/j.landig.2025.100962}{\corr{C. Langenberg}, \corr{U. Landmesser}, \corr{J. Deanfield}, \corr{O. Zeitz}, }
+\href{https://doi.org/10.1016/j.landig.2025.100962}{\corr{A. Joussen}, \corr{M. Pietzner}, \corr{B. Wild}, \corr{R. Eils}.}
+\href{https://doi.org/10.1016/j.landig.2025.100962}{\textit{The Lancet Digital Health}}
+\vspace{3pt}
+
+\yr{\href{https://doi.org/10.1101/2025.06.10.657924}{2025}}\href{https://doi.org/10.1101/2025.06.10.657924}{\nobold{Biologically informed variational inference enables interpretable cell phenotyping and discovery.}}\\
+\href{https://doi.org/10.1101/2025.06.10.657924}{L. Arnoldt, \textbf{J. Upmeier zu Belzen}, L. Herrmann, \auetal{K. Nguyen, }\corr{N. Ishaque}, }
+\href{https://doi.org/10.1101/2025.06.10.657924}{\corr{F. Theis}, \corr{B. Wild}, \corr{R. Eils}.}
+\href{https://doi.org/10.1101/2025.06.10.657924}{\textit{bioRxiv:2025.06.10.657924}}
+\vspace{3pt}
+
+\yr{\href{https://doi.org/10.1038/s41467-025-55879-x}{2025}}\href{https://doi.org/10.1038/s41467-025-55879-x}{\nobold{Medical history predicts phenome-wide disease onset and enables the rapid response to emerging health threats.}}\\
+\href{https://doi.org/10.1038/s41467-025-55879-x}{J. Steinfeldt, B. Wild, T. Bürgel, M. Pietzner, \textbf{J. Upmeier zu Belzen}, A. Vauvelle, }
+\href{https://doi.org/10.1038/s41467-025-55879-x}{\auetal{S. Hegselmann, S. Denaxas, H. Hemingway, }\corr{C. Langenberg}, \corr{U. Landmesser}, }
+\href{https://doi.org/10.1038/s41467-025-55879-x}{\corr{J. Deanfield}, \corr{R. Eils}.}
+\href{https://doi.org/10.1038/s41467-025-55879-x}{\textit{Nature Communications}}
+\vspace{3pt}
+
+\yr{\href{https://doi.org/10.1038/s41591-024-03214-0}{2024}}\href{https://doi.org/10.1038/s41591-024-03214-0}{\nobold{An open-source framework for end-to-end analysis of electronic health record data.}}\\
+\href{https://doi.org/10.1038/s41591-024-03214-0}{L. Heumos, P. Ehmele, T. Treis, \textbf{J. Upmeier zu Belzen}, E. Roellin, }
+\href{https://doi.org/10.1038/s41591-024-03214-0}{\auetal{L. May, A. Namsaraeva, N. Horlava, V. Shitov, X. Zhang, L. Zappia, R. Knoll, N. Lang, L. Hetzel, I. Virshup, L. Sikkema, F. Curion, }}
+\href{https://doi.org/10.1038/s41591-024-03214-0}{\corr{R. Eils}, \corr{H. Schiller}, \corr{A. Hilgendorff}, \corr{F. Theis}.}
+\href{https://doi.org/10.1038/s41591-024-03214-0}{\textit{Nature Medicine}}
+\vspace{3pt}
+
+\yr{\href{https://openreview.net/pdf?id=VyM7Voux5b}{2024}}\href{https://openreview.net/pdf?id=VyM7Voux5b}{\nobold{DNA language models identify variants predictive across the human phenome.}}\\
+\href{https://openreview.net/pdf?id=VyM7Voux5b}{B. Wild, \textbf{J. Upmeier zu Belzen}, L. Herrmann, \auetal{P. Kittner, }\corr{R. Eils}.}
+\href{https://openreview.net/pdf?id=VyM7Voux5b}{\textit{MLGenX Workshop at the International Conference on Learning Representations}}
+\vspace{3pt}
+
+\yr{\href{https://doi.org/10.1038/s41591-022-01980-3}{2022}}\href{https://doi.org/10.1038/s41591-022-01980-3}{\nobold{Metabolomic profiles predict individual multidisease outcomes.}}\\
+\href{https://doi.org/10.1038/s41591-022-01980-3}{T. Bürgel, J. Steinfeldt, G. Ruyoga, M. Pietzner, D. Bizzarri, D. Vojinovic, }
+\href{https://doi.org/10.1038/s41591-022-01980-3}{\textbf{J. Upmeier zu Belzen}, L. Loock, }
+\href{https://doi.org/10.1038/s41591-022-01980-3}{\auetal{P. Kittner, L. Christmann, N. Hollmann, H. Strangalies, J. Braunger, B. Wild, S. Chiesa, J. Spranger, F. Klostermann, E. van den Akker, S. Trompet, S. Mooijaart, N. Sattar, J. Jukema, B. Lavrijssen, M. Kavousi, M. Ghanbari, M. Ikram, E. Slagboom, M. Kivimaki, }}
+\href{https://doi.org/10.1038/s41591-022-01980-3}{\corr{C. Langenberg}, \corr{J. Deanfield}, \corr{R. Eils}, \corr{U. Landmesser}.}
+\href{https://doi.org/10.1038/s41591-022-01980-3}{\textit{Nature Medicine}}
+\vspace{3pt}
+
+\yr{\href{https://doi.org/10.1016/S2589-7500(21)00249-1}{2022}}\href{https://doi.org/10.1016/S2589-7500(21)00249-1}{\nobold{Neural network-based integration of polygenic and clinical information: development and validation of a prediction model for 10-year risk of major adverse cardiac events in the UK Biobank cohort.}}\\
+\href{https://doi.org/10.1016/S2589-7500(21)00249-1}{J. Steinfeldt, T. Bürgel, L. Loock, P. Kittner, G. Ruyoga, \textbf{J. Upmeier zu Belzen}, }
+\href{https://doi.org/10.1016/S2589-7500(21)00249-1}{S. Sasse, \auetal{H. Strangalies, L. Christmann, N. Hollmann, B. Wolf, }\corr{B. Ference}, }
+\href{https://doi.org/10.1016/S2589-7500(21)00249-1}{\corr{J. Deanfield}, \corr{U. Landmesser}, \corr{R. Eils}.}
+\href{https://doi.org/10.1016/S2589-7500(21)00249-1}{\textit{The Lancet Digital Health}}
+\vspace{3pt}
+
+\yr{\href{https://doi.org/10.1093/nar/gkaa1198}{2021}}\href{https://doi.org/10.1093/nar/gkaa1198}{\nobold{Optogenetic control of Neisseria meningitidis Cas9 genome editing using an engineered, light-switchable anti-CRISPR protein.}}\\
+\href{https://doi.org/10.1093/nar/gkaa1198}{M. Hoffmann, J. Mathony, \textbf{J. Upmeier zu Belzen}, Z. Harteveld, }
+\href{https://doi.org/10.1093/nar/gkaa1198}{\auetal{S. Aschenbrenner, C. Stengl, D. Grimm, }\corr{B. Correia}, \corr{R. Eils}, }
+\href{https://doi.org/10.1093/nar/gkaa1198}{\corr{D. Niopek}.}
+\href{https://doi.org/10.1093/nar/gkaa1198}{\textit{Nucleic Acids Research}}
+\vspace{3pt}
+
+\yr{\href{https://doi.org/10.3389/fmed.2020.00177}{2020}}\href{https://doi.org/10.3389/fmed.2020.00177}{\nobold{Effects of label noise on deep learning-based skin cancer classification.}}\\
+\href{https://doi.org/10.3389/fmed.2020.00177}{A. Hekler, J. Kather, E. Krieghoff-Henning, J. Utikal, F. Meier, F. Gellrich, }
+\href{https://doi.org/10.3389/fmed.2020.00177}{\textbf{J. Upmeier zu Belzen}, L. French, }
+\href{https://doi.org/10.3389/fmed.2020.00177}{\auetal{J. Schlager, K. Ghoreschi, T. Wilhelm, H. Kutzner, C. Berking, M. Heppt, S. Haferkamp, W. Sondermann, D. Schadendorf, B. Schilling, B. Izar, R. Maron, M. Schmitt, S. Fröhling, D. Lipka, }}
+\href{https://doi.org/10.3389/fmed.2020.00177}{\corr{T. Brinker}.}
+\href{https://doi.org/10.3389/fmed.2020.00177}{\textit{Frontiers in Medicine}}
+\vspace{3pt}
+
+\yr{\href{https://doi.org/10.1038/s41589-020-0518-9}{2020}}\href{https://doi.org/10.1038/s41589-020-0518-9}{\nobold{Computational design of anti-CRISPR proteins with improved inhibition potency.}}\\
+\href{https://doi.org/10.1038/s41589-020-0518-9}{J. Mathony, Z. Harteveld, C. Schmelas, \textbf{J. Upmeier zu Belzen}, S. Aschenbrenner, }
+\href{https://doi.org/10.1038/s41589-020-0518-9}{\auetal{W. Sun, M. Hoffmann, C. Stengl, A. Scheck, S. Georgeon, S. Rosset, Y. Wang, D. Grimm, }}
+\href{https://doi.org/10.1038/s41589-020-0518-9}{\corr{R. Eils}, \corr{B. Correia}, \corr{D. Niopek}.}
+\href{https://doi.org/10.1038/s41589-020-0518-9}{\textit{Nature Chemical Biology}}
+\vspace{3pt}
+
+\yr{\href{https://doi.org/10.1038/s42256-019-0049-9}{2019}}\href{https://doi.org/10.1038/s42256-019-0049-9}{\nobold{Leveraging implicit knowledge in neural networks for functional dissection and engineering of proteins.}}\\
+\href{https://doi.org/10.1038/s42256-019-0049-9}{\textbf{J. Upmeier zu Belzen}, T. Bürgel, }
+\href{https://doi.org/10.1038/s42256-019-0049-9}{\auetal{S. Holderbach, F. Bubeck, L. Adam, C. Gandor, M. Klein, J. Mathony, P. Pfuderer, L. Platz, M. Przybilla, M. Schwendemann, D. Heid, M. Hoffmann, M. Jendrusch, C. Schmelas, M. Waldhauer, }}
+\href{https://doi.org/10.1038/s42256-019-0049-9}{\corr{I. Lehmann}, \corr{D. Niopek}, \corr{R. Eils}.}
+\href{https://doi.org/10.1038/s42256-019-0049-9}{\textit{Nature Machine Intelligence}}
+\vspace{3pt}
+
+
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% End CV Document %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------%
+% The following is copyright and licensing information for
+% redistribution of this LaTeX source code; it also includes a liability
+% statement. If this source code is not being redistributed to others,
+% it may be omitted. It has no effect on the function of the above code.
+%----------------------------------------------------------------------%
+% Copyright (c) 2007, 2008, 2009, 2010, 2011 by Theodore P. Pavlic
+%
+% Unless otherwise expressly stated, this work is licensed under the
+% Creative Commons Attribution-Noncommercial 3.0 United States License. To
+% view a copy of this license, visit
+% http://creativecommons.org/licenses/by-nc/3.0/us/ or send a letter to
+% Creative Commons, 171 Second Street, Suite 300, San Francisco,
+% California, 94105, USA.
+%
+% THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+% OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+% MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+% IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+% CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+% TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+% SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+%----------------------------------------------------------------------%

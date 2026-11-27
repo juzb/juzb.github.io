@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dr. rer. nat. Julius Upmeier zu Belzen &mdash; CV</title>
+<meta name="description" content="Dr. rer. nat. Julius Upmeier zu Belzen &mdash; curriculum vitae.">
+<style>
+:root{
+  --fg:#15171a; --muted:#5c6066; --faint:#6e7379; --rule:#d7d9dd; --bg:#fff;
+  --label-col:7.5rem; --gap:1.6rem;
+}
+@media (prefers-color-scheme: dark){
+  :root{ --fg:#e6e7e9; --muted:#9aa0a6; --faint:#80868d; --rule:#33363b; --bg:#15171a; }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);
+  font-family:"Iowan Old Style","Charter","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  font-size:15.5px;line-height:1.45;text-rendering:optimizeLegibility}
+.page{max-width:62rem;margin:0 auto;padding:3rem 1.25rem 5rem}
+a{color:inherit;text-decoration:underline;text-decoration-thickness:.5px;
+  text-underline-offset:2px;text-decoration-color:var(--rule)}
+a:hover{text-decoration-color:currentColor}
+.sc{font-variant:small-caps}
+
+header.masthead{display:flex;align-items:baseline;justify-content:space-between;
+  gap:1rem;flex-wrap:wrap;border-bottom:1.5px solid var(--fg);
+  padding-bottom:.35rem;margin-bottom:1.6rem}
+h1{font-size:1.65rem;line-height:1.1;margin:0;font-weight:700;letter-spacing:-.01em}
+.meta{font-size:.82rem;color:var(--muted);white-space:nowrap}
+.meta a{margin-left:.9rem}
+
+/* intro: portrait + text */
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-bottom:2.4rem;
+  align-items:start}
+.hero.no-photo{grid-template-columns:1fr}
+.hero figure{margin:0;grid-column:2;grid-row:1}   /* portrait sits right */
+.hero .intro{grid-column:1;grid-row:1;min-width:0}
+.hero img{width:100%;height:auto;display:block;border-radius:2px}
+.hero figcaption, .credit{font-size:.72rem;color:var(--muted);margin-top:.35rem;line-height:1.3}
+.hero p{margin:0 0 .7rem}
+.hero p:last-child{margin-bottom:0}
+.links{margin:1rem 0 0;font-size:.92rem}
+.links a{color:var(--fg);text-decoration-color:var(--rule)}
+.links .sep{color:var(--muted);margin:0 .55rem;user-select:none}
+
+/* featured paper */
+.featured{margin:0 0 2.4rem;padding:1.1rem 0 0;border-top:1px solid var(--rule)}
+.featured h2{font-size:.88rem;font-weight:400;font-variant:small-caps;
+  letter-spacing:.06em;color:var(--muted);margin:0 0 .5rem}
+.featured .paper-title{font-size:1.12rem;font-weight:700;margin:0 0 .2rem;line-height:1.25}
+.featured .venue{color:var(--muted);font-size:.88rem;margin:0 0 .8rem}
+.featured .cols{display:grid;grid-template-columns:1fr 1fr;gap:1.8rem;align-items:start}
+.featured figure{margin:0}
+.featured img{width:100%;height:auto;display:block;border:1px solid var(--rule);border-radius:2px}
+.featured .abstract{margin:0;text-align:justify;hyphens:auto}
+
+.cv-heading{display:flex;align-items:baseline;justify-content:space-between;
+  gap:1rem;flex-wrap:wrap;margin:0 0 1.4rem;padding-bottom:.35rem;
+  border-bottom:1.5px solid var(--fg)}
+.cv-heading h2{font-size:1.25rem;font-weight:700;margin:0}
+.cv-heading .who{color:var(--muted);margin:.15rem 0 0;font-size:.95rem}
+.cv-heading .dl{font-size:.9rem;white-space:nowrap}
+
+/* the CV body reads in one colour: the entry text, its sub-lines, the dates
+   and the section labels are all --muted, so nothing in the block sits at a
+   different weight of grey */
+section.cv{display:grid;grid-template-columns:var(--label-col) 1fr;
+  column-gap:var(--gap);margin-bottom:1.5rem;color:var(--muted)}
+section.cv > h2{grid-column:1;margin:.1rem 0 0;font-size:.88rem;font-weight:400;
+  font-variant:small-caps;letter-spacing:.06em;color:var(--muted)}
+.entries{grid-column:2;display:flex;flex-direction:column;gap:.7rem;min-width:0}
+.entry{display:grid;grid-template-columns:1fr auto;column-gap:1.5rem;
+  align-items:baseline;break-inside:avoid}
+.entry .body{min-width:0}
+.entry p{margin:0}
+.entry .date{font-size:.9rem;white-space:nowrap;
+  font-variant-numeric:tabular-nums;text-align:right}
+.contact{grid-column:2;display:flex;flex-wrap:wrap;gap:.3rem 3rem;justify-content:space-between}
+.contact ul{list-style:none;margin:0;padding:0}
+.contact li{white-space:nowrap}
+
+@media (max-width:46rem){
+  .featured .cols{grid-template-columns:1fr}
+  .hero{grid-template-columns:1fr;gap:1.1rem}
+  .hero figure, .hero .intro{grid-column:1;grid-row:auto}
+  .hero figure{max-width:22rem}
+}
+@media (max-width:40rem){
+  .page{padding:2rem 1rem 3rem}
+  .hero{grid-template-columns:1fr;gap:1rem}
+  .hero figure, .hero .intro{grid-column:1;grid-row:auto}
+  .hero figure{max-width:18rem}
+  section.cv{grid-template-columns:1fr;row-gap:.45rem;margin-bottom:1.75rem}
+  section.cv > h2{border-bottom:1px solid var(--rule);padding-bottom:.2rem}
+  .entries,.contact{grid-column:1}
+  .entry{grid-template-columns:1fr;row-gap:.1rem}
+  .entry .date{text-align:left;order:-1;font-size:.8rem}
+  .contact{flex-direction:column;gap:.9rem}
+}
+/* short biography: off unless web.viva.show says otherwise */
+.bio{margin:0 0 2.4rem;padding:1.1rem 0 0;border-top:1px solid var(--rule)}
+.bio h2{font-size:.88rem;font-weight:400;font-variant:small-caps;
+  letter-spacing:.06em;color:var(--muted);margin:0 0 .6rem}
+.bio p{margin:0 0 .7rem;max-width:46rem}
+
+/* legal notices: as quiet as they can be while still being findable - the
+   law wants them "leicht erkennbar", so --faint stays above 4.5:1 contrast */
+.cite{margin:.15rem 0 0;font-size:.74rem;letter-spacing:.02em}
+.cite a{color:var(--faint);text-decoration:none;border-bottom:1px solid var(--rule);
+  margin-right:.9em;cursor:pointer}
+.cite a:hover{color:var(--fg);border-bottom-color:currentColor}
+.legalbar{margin:4rem 0 0;padding-top:.9rem;border-top:1px solid var(--rule);
+  font-size:.74rem;color:var(--faint);text-align:right;letter-spacing:.02em}
+.legalbar a{color:inherit;text-decoration-color:var(--rule)}
+.legal h2{font-size:.88rem;font-weight:400;font-variant:small-caps;
+  letter-spacing:.06em;color:var(--muted);margin:0 0 .6rem}
+.legal section{margin:0 0 2.6rem;max-width:42rem}
+.legal p{margin:0 0 .7rem}
+.legal .addr{line-height:1.6}
+.legal .back{font-size:.8rem;color:var(--faint)}
+.legal .masthead h1 a{text-decoration:none}
+.legal .masthead h1 a:hover{text-decoration:underline;
+  text-decoration-thickness:.5px;text-underline-offset:3px;
+  text-decoration-color:var(--rule)}
+
+@media print{
+  :root{--fg:#000;--muted:#333;--rule:#999;--bg:#fff;--label-col:6.5rem;--gap:1rem}
+  body{font-size:9.5pt;line-height:1.35}
+  .page{max-width:none;padding:0}
+  .meta a, .hero, .featured, .bio, .cv-heading .dl, .cv-heading .who,
+  .legalbar{display:none}
+  a{text-decoration:none}
+  section.cv{margin-bottom:1rem}
+  .entries{gap:.45rem}
+}
+</style>
+</head>
+<body>
+<main class="page">
+  <header class="masthead">
+    <h1>Dr. rer. nat. Julius Upmeier zu Belzen</h1>
+    <div class="meta">2026-11-27</div>
+  </header>
+  <div class="hero">
+    <figure>
+      <img src="juzb.jpg" alt="Portrait of Julius Upmeier zu Belzen">
+      <figcaption>Photo: © BIH | Heidi Scherm 2026.</figcaption>
+    </figure>
+    <div class="intro">
+<p>Postdoctoral researcher at the <a href="https://www.bihealth.org/en/research/research-group/eils-lab-bih-digital-health-center">Berlin Institute of Health at Charité &ndash; Universitätsmedizin Berlin, in the Artificial Intelligence group of Roland Eils</a>.</p>
+<p>I am interested in machine learning of disease risks to improve our understanding of disease. My doctoral research focused on interpretable neural network architectures to predict risks on individual-level genotypes. In the future, I plan to focus on benchmarking and evaluating disease risk models in population cohorts to improve our understanding of what makes models work well, and improve reproducibility. Additionally, I am interested in multi-omics models, and the shared and complementary contributions of the different modalities to predictive performance.</p>
+<p>My doctorate, a Dr. rer. nat. in Bioinformatics, was awarded by the Freie Universität Berlin in 2026 for research carried out in the Artificial Intelligence group of Roland Eils at the Berlin Institute of Health at Charité &ndash; Universitätsmedizin Berlin. Before that, I completed a Master of Science and a Bachelor of Science in Molecular Biotechnology at the Ruprecht-Karls-Universität Heidelberg, Germany.</p>
+      <p class="links"><a href="https://orcid.org/0000-0002-0966-4458">ORCID</a><span class="sep">&middot;</span><a href="https://github.com/juzb">GitHub</a><span class="sep">&middot;</span><a href="https://www.linkedin.com/in/julius-upmeier-zu-belzen-7520b5196/">LinkedIn</a><span class="sep">&middot;</span><a href="https://bsky.app/profile/juliusuzb.bsky.social">Bluesky</a><span class="sep">&middot;</span><a href="mailto:juliusupmeierzubelzen@gmail.com">Email</a></p>
+    </div>
+  </div>
+  <section class="featured">
+    <h2>Featured paper</h2>
+    <p class="paper-title"><a href="https://www.medrxiv.org/content/10.64898/2026.07.28.26359187v2">An interpretable omnigenic neural network architecture for the human genome</a></p>
+    <p class="venue">medRxiv preprint, posted 31 July 2026 · <a href="https://doi.org/10.64898/2026.07.28.26359187">doi:10.64898/2026.07.28.26359187</a> &middot; <a href="https://github.com/juzb/ogm">github.com/juzb/ogm</a></p>
+    <div class="cols">
+      <div class="abstract"><p>Genetic prediction of complex phenotypes typically relies on additive linear models, which scale well but cannot capture non-additive effects or deeply integrate molecular and clinical data. Domain-specific neural networks have driven advances in images, text, and other modalities, but genome-scale neural networks remain challenging because genotypes are sparse and high-dimensional, effective sample sizes are limited, and generic architectures lack interpretability. Here, we introduce the omnigenic neural network, a biologically structured architecture inspired by the omnigenic model of complex traits. The model learns hierarchical representations of biological processes, accommodates multimodal inputs, supports transfer learning, and enables multitask prediction. Models trained in the UK Biobank and evaluated in the All of Us cohort for ischemic heart disease, type 2 diabetes, and schizophrenia outperformed published PGS Catalog and PRS-CSx scores. A multitask model trained across 36 cardiovascular endpoints further outperformed corresponding single-phenotype models and baselines. The architecture provides systems-level interpretability by quantifying the contributions of biological processes, which were consistent with established disease mechanisms. It also captures non-linear interactions between variants. Analysis of these interactions using Integrated Hessians revealed patterns concordant with previously reported epistatic associations. Together, these findings establish the omnigenic neural network as a flexible framework for interpretable, multimodal, and multitask genomic prediction.</p></div>
+      <figure>
+        <img src="featured.png" alt="Figure from An interpretable omnigenic neural network architecture for the human genome">
+        <figcaption>The omnigenic neural network architecture takes individual-level variant-dosage and covariate information, and first maps them to gene representations. From there, it maps to representations of biological processes with increasing levels of abstraction, and the final representation is used to predict the phenotype of interest. This architecture enables risk stratification as well as multi-modal and multi-task predictions. It is interpretable at the systems level, and shows feature interactions between variants.</figcaption>
+      </figure>
+    </div>
+  </section>
+  <div class="cv-heading">
+    <div>
+      <h2>Curriculum vitae</h2>
+      <p class="who">Dr. rer. nat. Julius Upmeier zu Belzen</p>
+    </div>
+    <a class="dl" href="cv_juzb_2026-11-27.pdf">Download PDF</a>
+  </div>
+  <section class="cv">
+    <h2>Contact</h2>
+    <div class="contact">
+      <ul><li><a href="mailto:julius.upmeier@bih-charite.de">julius.upmeier@bih-charite.de</a></li><li><a href="mailto:juliusupmeierzubelzen@gmail.com">juliusupmeierzubelzen@gmail.com</a></li></ul>
+      <ul><li><a href="https://juzb.github.io">juzb.github.io</a></li><li><a href="https://github.com/juzb/">github.com/juzb</a></li><li><a href="https://orcid.org/0000-0002-0966-4458">orcid.org/0000-0002-0966-4458</a></li></ul>
+      <ul><li>German</li><li>English</li></ul>
+    </div>
+  </section>
+  <section class="cv">
+    <h2>Interests</h2>
+    <div class="entries">
+      <article class="entry">
+        <div class="body">
+          <p>statistical and complex trait genetics, polygenic risk prediction, interpretable deep learning for genomics,<br>
+population cohorts (UK Biobank, All of Us), model benchmarking and evaluation, reproducibility</p>
+        </div>
+        <div class="date"></div>
+      </article>
+    </div>
+  </section>
+  <section class="cv">
+    <h2>Currently</h2>
+    <div class="entries">
+      <article class="entry">
+        <div class="body">
+          <p><strong>Postdoctoral researcher</strong></p>
+          <p class="sub">Berlin Institute of Health at Charité &ndash; Universitätsmedizin Berlin,<br>
+Artificial Intelligence group of <a href="https://www.bihealth.org/en/research/research-group/eils-lab-bih-digital-health-center">Roland Eils</a>.</p>
+        </div>
+        <div class="date">since 2026</div>
+      </article>
+    </div>
+  </section>
+  <section class="cv">
+    <h2>Education</h2>
+    <div class="entries">
+      <article class="entry">
+        <div class="body">
+          <p><strong>Dr. rer. nat. &ndash; Bioinformatics</strong>, <em>summa cum laude</em></p>
+          <p class="sub"><a href="https://refubium.fu-berlin.de/handle/fub188/54365">An interpretable omnigenic neural network architecture for the human genome</a><br>
+Freie Universität Berlin, Fachbereich Mathematik und Informatik,<br>
+Berlin Institute of Health at Charité &ndash; Universitätsmedizin Berlin. Supervisor: Roland Eils.</p>
+        </div>
+        <div class="date">2020&ndash;2026</div>
+      </article>
+      <article class="entry">
+        <div class="body">
+          <p><strong>Master of Science &ndash; Molecular Biotechnology</strong></p>
+          <p class="sub">Specialisation in Bioinformatics. Ruprecht-Karls-Universität Heidelberg.</p>
+        </div>
+        <div class="date">2018&ndash;2020</div>
+      </article>
+      <article class="entry">
+        <div class="body">
+          <p><strong>Bachelor of Science &ndash; Molecular Biotechnology</strong></p>
+          <p class="sub">Specialisation in Bioinformatics. Ruprecht-Karls-Universität Heidelberg.</p>
+        </div>
+        <div class="date">2015&ndash;2018</div>
+      </article>
+    </div>
+  </section>
+  <section class="cv">
+    <h2>Service</h2>
+    <div class="entries">
+      <article class="entry">
+        <div class="body">
+          <p>Elected as <strong>Chair of the BIH-PhDNet</strong></p>
+          <p class="sub">Co-founded the network to foster scientific exchange among PhD students and strengthen<br>
+their representation within the institute.</p>
+        </div>
+        <div class="date">2025&ndash;2026</div>
+      </article>
+      <article class="entry">
+        <div class="body">
+          <p><strong>Reviewer</strong> for the Pacific Symposium on Biocomputing 2027. Co-reviewer for the</p>
+          <p class="sub">Conference on Neural Information Processing Systems and Communications Medicine.</p>
+        </div>
+        <div class="date">since 2024</div>
+      </article>
+      <article class="entry">
+        <div class="body">
+          <p>Coordination of <strong>access to the All of Us dataset</strong> at Charité.</p>
+        </div>
+        <div class="date">2024</div>
+      </article>
+      <article class="entry">
+        <div class="body">
+          <p><strong>Co-organisation of the Girls&rsquo;Day</strong> at the BIH-Digital Health Center</p>
+          <p class="sub">One-day internship for girls from age 10 in technical professions.</p>
+        </div>
+        <div class="date">2024</div>
+      </article>
+      <article class="entry">
+        <div class="body">
+          <p>Co-founding and coordination of the <strong>Population Cohorts User Group</strong> at Charité:</p>
+          <p class="sub">Monthly forum for collaboration on the use of UK Biobank, All of Us, and similar datasets.</p>
+        </div>
+        <div class="date">since 2023</div>
+      </article>
+    </div>
+  </section>
+  <section class="cv">
+    <h2>Honours</h2>
+    <div class="entries">
+      <article class="entry">
+        <div class="body">
+          <p>Selection for participation in the <a href="https://lpshg.com"><strong>Leena Peltonen School of Human Genomics</strong></a>.</p>
+        </div>
+        <div class="date">2026</div>
+      </article>
+      <article class="entry">
+        <div class="body">
+          <p>Poster prize at the <strong>Systems Biology of Human Disease</strong> conference, Nashville.</p>
+        </div>
+        <div class="date">2022</div>
+      </article>
+      <article class="entry">
+        <div class="body">
+          <p>Selection for participation in the <a href="https://www.lindau-nobel.org/"><strong>70th and 72nd Lindau Nobel Laureate Meetings</strong></a>.</p>
+        </div>
+        <div class="date">2020</div>
+      </article>
+      <article class="entry">
+        <div class="body">
+          <p>Selection for participation in the <a href="https://www.heidelberg-laureate-forum.org/"><strong>8th Heidelberg Laureate Forum</strong></a>.</p>
+        </div>
+        <div class="date">2020</div>
+      </article>
+      <article class="entry">
+        <div class="body">
+          <p>Winner of the <a href="https://falling-walls.com/lab"><strong>Falling Walls Lab Adlershof</strong></a>, science communication in a 3-minute pitch:</p>
+          <p class="sub">Breaking the wall of black boxes in biomedical artificial intelligence.</p>
+        </div>
+        <div class="date">2019</div>
+      </article>
+      <article class="entry">
+        <div class="body">
+          <p>Scholarship by <a href="https://www.sdw.org/"><strong>Stiftung der Deutschen Wirtschaft</strong></a> funded by the German Federal</p>
+          <p class="sub">Ministry of Education and Research.</p>
+        </div>
+        <div class="date">2016&ndash;2020</div>
+      </article>
+    </div>
+  </section>
+  <section class="cv">
+    <h2>Teaching</h2>
+    <div class="entries">
+      <article class="entry">
+        <div class="body">
+          <p><strong>Co-supervision</strong> of 7 Bachelor&rsquo;s thesis projects and 7 Master&rsquo;s thesis projects at Ruprecht-</p>
+          <p class="sub">Karls-Universität Heidelberg, Freie Universität Berlin, and Humboldt-Universität Berlin.</p>
+        </div>
+        <div class="date">2020&ndash;2026</div>
+      </article>
+      <article class="entry">
+        <div class="body">
+          <p><strong>Co-supervision</strong> of 4 projects for software development project internships at Freie</p>
+          <p class="sub">Universität Berlin.</p>
+        </div>
+        <div class="date">2020&ndash;2024</div>
+      </article>
+      <article class="entry">
+        <div class="body">
+          <p><strong>Seminar: Artificial Intelligence in Medicine</strong></p>
+          <p class="sub">Four sessions on interpretable machine learning of protein function at Charité.</p>
+        </div>
+        <div class="date">2020&ndash;2022</div>
+      </article>
+    </div>
+  </section>
+  <section class="cv">
+    <h2>Internships</h2>
+    <div class="entries">
+      <article class="entry">
+        <div class="body">
+          <p>Two months at École Polytechnique Fédérale de Lausanne with Bruno E. Correia.</p>
+        </div>
+        <div class="date">2018</div>
+      </article>
+      <article class="entry">
+        <div class="body">
+          <p>Two months at BGI-Research in Shenzhen with Zhouchun Shang.</p>
+        </div>
+        <div class="date">2018</div>
+      </article>
+    </div>
+  </section>
+  <section class="cv">
+    <h2>Conferences</h2>
+    <div class="entries">
+      <article class="entry">
+        <div class="body">
+          <p>Talk: <a href="https://lpshg.com"><strong>Leena Peltonen School of Human Genomics</strong></a>, Hinxton</p>
+          <p class="sub">An interpretable neural network architecture for the human genome.</p>
+        </div>
+        <div class="date">2026</div>
+      </article>
+      <article class="entry">
+        <div class="body">
+          <p>Poster: <strong>European Society of Human Genetics Conference</strong>, Milan</p>
+          <p class="sub">Interpretable neural network polygenic risk scores for common diseases.</p>
+        </div>
+        <div class="date">2025</div>
+      </article>
+      <article class="entry">
+        <div class="body">
+          <p>Talk: <strong>Systems Biology of Human Disease</strong>, Berlin</p>
+          <p class="sub">Inference and application of a data-driven gene ontology with cell-type resolution across the body.</p>
+        </div>
+        <div class="date">2025</div>
+      </article>
+      <article class="entry">
+        <div class="body">
+          <p>Poster: <strong>American Society of Human Genetics Conference</strong>, Boston</p>
+          <p class="sub">Neural network polygenic scores can improve interpretability and accuracy across cohorts by modelling nonlinear interactions.</p>
+        </div>
+        <div class="date">2025</div>
+      </article>
+      <article class="entry">
+        <div class="body">
+          <p>Talk: <strong>Systems Biology of Human Disease</strong>, Berlin</p>
+          <p class="sub">Leveraging implicit knowledge in neural networks for functional dissection and engineering of proteins.</p>
+        </div>
+        <div class="date">2019</div>
+      </article>
+    </div>
+  </section>
+  <section class="cv">
+    <h2>Publications</h2>
+    <div class="entries">
+      <article class="entry">
+        <div class="body">
+          <p><a href="https://doi.org/10.64898/2026.07.28.26359187"><span class="ptitle">An interpretable omnigenic neural network architecture for the human genome.</span></a></p>
+          <p class="sub"><strong>J. Upmeier zu Belzen</strong>, L. Arnoldt,  N. Hollmann, L. Herrmann, K. Nguyen, L. Eckhoff, L. Kohleick, S. Abou Ghaloun, H. Schmidt,  S. Hegselmann, F. Theis, T. Bürgel, J. Steinfeldt, B. Wild,  R. Eils. <em>medRxiv:2026.07.28.26359187</em></p>
+          <p class="cite"><a href="https://doi.org/10.64898/2026.07.28.26359187" data-copy="10.64898/2026.07.28.26359187" title="copy DOI">doi</a><a href="juzb.bib" data-bib="upmeier2026" title="copy bibtex string">bib</a></p>
+        </div>
+        <div class="date">2026</div>
+      </article>
+      <article class="entry">
+        <div class="body">
+          <p><a href="https://doi.org/10.1016/j.landig.2025.100962"><span class="ptitle">A predictive atlas of disease onset from retinal fundus photographs: a modelling study using data from population-based cohorts.</span></a></p>
+          <p class="sub">T. Bürgel, L. Loock, J. Steinfeldt, N. Kronenberg, L. Hoffmann, S. Künzel,  <strong>J. Upmeier zu Belzen</strong>, L. Arnoldt, A. Khawaja, R. Luben, P. Foster,  C. Langenberg, U. Landmesser, J. Deanfield, O. Zeitz,  A. Joussen, M. Pietzner, B. Wild, R. Eils. <em>The Lancet Digital Health</em></p>
+          <p class="cite"><a href="https://doi.org/10.1016/j.landig.2025.100962" data-copy="10.1016/j.landig.2025.100962" title="copy DOI">doi</a><a href="juzb.bib" data-bib="buergel2026" title="copy bibtex string">bib</a></p>
+        </div>
+        <div class="date">2026</div>
+      </article>
+      <article class="entry">
+        <div class="body">
+          <p><a href="https://doi.org/10.1101/2025.06.10.657924"><span class="ptitle">Biologically informed variational inference enables interpretable cell phenotyping and discovery.</span></a></p>
+          <p class="sub">L. Arnoldt, <strong>J. Upmeier zu Belzen</strong>, L. Herrmann, K. Nguyen, N. Ishaque,  F. Theis, B. Wild, R. Eils. <em>bioRxiv:2025.06.10.657924</em></p>
+          <p class="cite"><a href="https://doi.org/10.1101/2025.06.10.657924" data-copy="10.1101/2025.06.10.657924" title="copy DOI">doi</a><a href="juzb.bib" data-bib="arnoldt2025" title="copy bibtex string">bib</a></p>
+        </div>
+        <div class="date">2025</div>
+      </article>
+      <article class="entry">
+        <div class="body">
+          <p><a href="https://doi.org/10.1038/s41467-025-55879-x"><span class="ptitle">Medical history predicts phenome-wide disease onset and enables the rapid response to emerging health threats.</span></a></p>
+          <p class="sub">J. Steinfeldt, B. Wild, T. Bürgel, M. Pietzner, <strong>J. Upmeier zu Belzen</strong>, A. Vauvelle,  S. Hegselmann, S. Denaxas, H. Hemingway, C. Langenberg, U. Landmesser,  J. Deanfield, R. Eils. <em>Nature Communications</em></p>
+          <p class="cite"><a href="https://doi.org/10.1038/s41467-025-55879-x" data-copy="10.1038/s41467-025-55879-x" title="copy DOI">doi</a><a href="juzb.bib" data-bib="steinfeldt2025" title="copy bibtex string">bib</a></p>
+        </div>
+        <div class="date">2025</div>
+      </article>
+      <article class="entry">
+        <div class="body">
+          <p><a href="https://doi.org/10.1038/s41591-024-03214-0"><span class="ptitle">An open-source framework for end-to-end analysis of electronic health record data.</span></a></p>
+          <p class="sub">L. Heumos, P. Ehmele, T. Treis, <strong>J. Upmeier zu Belzen</strong>, E. Roellin,  L. May, A. Namsaraeva, N. Horlava, V. Shitov, X. Zhang, L. Zappia, R. Knoll, N. Lang, L. Hetzel, I. Virshup, L. Sikkema, F. Curion,  R. Eils, H. Schiller, A. Hilgendorff, F. Theis. <em>Nature Medicine</em></p>
+          <p class="cite"><a href="https://doi.org/10.1038/s41591-024-03214-0" data-copy="10.1038/s41591-024-03214-0" title="copy DOI">doi</a><a href="juzb.bib" data-bib="heumos2024" title="copy bibtex string">bib</a></p>
+        </div>
+        <div class="date">2024</div>
+      </article>
+      <article class="entry">
+        <div class="body">
+          <p><a href="https://openreview.net/pdf?id=VyM7Voux5b"><span class="ptitle">DNA language models identify variants predictive across the human phenome.</span></a></p>
+          <p class="sub">B. Wild, <strong>J. Upmeier zu Belzen</strong>, L. Herrmann, P. Kittner, R. Eils. <em>MLGenX Workshop at the International Conference on Learning Representations</em></p>
+          <p class="cite"><a href="https://openreview.net/pdf?id=VyM7Voux5b" data-copy="https://openreview.net/pdf?id=VyM7Voux5b" title="copy URL">url</a><a href="juzb.bib" data-bib="wild2024" title="copy bibtex string">bib</a></p>
+        </div>
+        <div class="date">2024</div>
+      </article>
+      <article class="entry">
+        <div class="body">
+          <p><a href="https://doi.org/10.1038/s41591-022-01980-3"><span class="ptitle">Metabolomic profiles predict individual multidisease outcomes.</span></a></p>
+          <p class="sub">T. Bürgel, J. Steinfeldt, G. Ruyoga, M. Pietzner, D. Bizzarri, D. Vojinovic,  <strong>J. Upmeier zu Belzen</strong>, L. Loock,  P. Kittner, L. Christmann, N. Hollmann, H. Strangalies, J. Braunger, B. Wild, S. Chiesa, J. Spranger, F. Klostermann, E. van den Akker, S. Trompet, S. Mooijaart, N. Sattar, J. Jukema, B. Lavrijssen, M. Kavousi, M. Ghanbari, M. Ikram, E. Slagboom, M. Kivimaki,  C. Langenberg, J. Deanfield, R. Eils, U. Landmesser. <em>Nature Medicine</em></p>
+          <p class="cite"><a href="https://doi.org/10.1038/s41591-022-01980-3" data-copy="10.1038/s41591-022-01980-3" title="copy DOI">doi</a><a href="juzb.bib" data-bib="buergel2022" title="copy bibtex string">bib</a></p>
+        </div>
+        <div class="date">2022</div>
+      </article>
+      <article class="entry">
+        <div class="body">
+          <p><a href="https://doi.org/10.1016/S2589-7500(21)00249-1"><span class="ptitle">Neural network-based integration of polygenic and clinical information: development and validation of a prediction model for 10-year risk of major adverse cardiac events in the UK Biobank cohort.</span></a></p>
+          <p class="sub">J. Steinfeldt, T. Bürgel, L. Loock, P. Kittner, G. Ruyoga, <strong>J. Upmeier zu Belzen</strong>,  S. Sasse, H. Strangalies, L. Christmann, N. Hollmann, B. Wolf, B. Ference,  J. Deanfield, U. Landmesser, R. Eils. <em>The Lancet Digital Health</em></p>
+          <p class="cite"><a href="https://doi.org/10.1016/S2589-7500(21)00249-1" data-copy="10.1016/S2589-7500(21)00249-1" title="copy DOI">doi</a><a href="juzb.bib" data-bib="steinfeldt2022" title="copy bibtex string">bib</a></p>
+        </div>
+        <div class="date">2022</div>
+      </article>
+      <article class="entry">
+        <div class="body">
+          <p><a href="https://doi.org/10.1093/nar/gkaa1198"><span class="ptitle">Optogenetic control of Neisseria meningitidis Cas9 genome editing using an engineered, light-switchable anti-CRISPR protein.</span></a></p>
+          <p class="sub">M. Hoffmann, J. Mathony, <strong>J. Upmeier zu Belzen</strong>, Z. Harteveld,  S. Aschenbrenner, C. Stengl, D. Grimm, B. Correia, R. Eils,  D. Niopek. <em>Nucleic Acids Research</em></p>
+          <p class="cite"><a href="https://doi.org/10.1093/nar/gkaa1198" data-copy="10.1093/nar/gkaa1198" title="copy DOI">doi</a><a href="juzb.bib" data-bib="hoffmann2021" title="copy bibtex string">bib</a></p>
+        </div>
+        <div class="date">2021</div>
+      </article>
+      <article class="entry">
+        <div class="body">
+          <p><a href="https://doi.org/10.3389/fmed.2020.00177"><span class="ptitle">Effects of label noise on deep learning-based skin cancer classification.</span></a></p>
+          <p class="sub">A. Hekler, J. Kather, E. Krieghoff-Henning, J. Utikal, F. Meier, F. Gellrich,  <strong>J. Upmeier zu Belzen</strong>, L. French,  J. Schlager, K. Ghoreschi, T. Wilhelm, H. Kutzner, C. Berking, M. Heppt, S. Haferkamp, W. Sondermann, D. Schadendorf, B. Schilling, B. Izar, R. Maron, M. Schmitt, S. Fröhling, D. Lipka,  T. Brinker. <em>Frontiers in Medicine</em></p>
+          <p class="cite"><a href="https://doi.org/10.3389/fmed.2020.00177" data-copy="10.3389/fmed.2020.00177" title="copy DOI">doi</a><a href="juzb.bib" data-bib="hekler2020" title="copy bibtex string">bib</a></p>
+        </div>
+        <div class="date">2020</div>
+      </article>
+      <article class="entry">
+        <div class="body">
+          <p><a href="https://doi.org/10.1038/s41589-020-0518-9"><span class="ptitle">Computational design of anti-CRISPR proteins with improved inhibition potency.</span></a></p>
+          <p class="sub">J. Mathony, Z. Harteveld, C. Schmelas, <strong>J. Upmeier zu Belzen</strong>, S. Aschenbrenner,  W. Sun, M. Hoffmann, C. Stengl, A. Scheck, S. Georgeon, S. Rosset, Y. Wang, D. Grimm,  R. Eils, B. Correia, D. Niopek. <em>Nature Chemical Biology</em></p>
+          <p class="cite"><a href="https://doi.org/10.1038/s41589-020-0518-9" data-copy="10.1038/s41589-020-0518-9" title="copy DOI">doi</a><a href="juzb.bib" data-bib="mathony2020" title="copy bibtex string">bib</a></p>
+        </div>
+        <div class="date">2020</div>
+      </article>
+      <article class="entry">
+        <div class="body">
+          <p><a href="https://doi.org/10.1038/s42256-019-0049-9"><span class="ptitle">Leveraging implicit knowledge in neural networks for functional dissection and engineering of proteins.</span></a></p>
+          <p class="sub"><strong>J. Upmeier zu Belzen</strong>, T. Bürgel,  S. Holderbach, F. Bubeck, L. Adam, C. Gandor, M. Klein, J. Mathony, P. Pfuderer, L. Platz, M. Przybilla, M. Schwendemann, D. Heid, M. Hoffmann, M. Jendrusch, C. Schmelas, M. Waldhauer,  I. Lehmann, D. Niopek, R. Eils. <em>Nature Machine Intelligence</em></p>
+          <p class="cite"><a href="https://doi.org/10.1038/s42256-019-0049-9" data-copy="10.1038/s42256-019-0049-9" title="copy DOI">doi</a><a href="juzb.bib" data-bib="upmeier2019" title="copy bibtex string">bib</a></p>
+        </div>
+        <div class="date">2019</div>
+      </article>
+    </div>
+  </section>
+  <p class="legalbar"><a href="legal.html#impressum">Impressum</a> &middot; <a href="legal.html#datenschutz">Datenschutz</a></p>
+</main>
+<script type="application/json" id="bibdata">{"upmeier2026": "@misc{upmeier2026,\n  author  = {{Upmeier zu Belzen}, Julius and Arnoldt, Lucas and Hollmann, Noah and\n             Herrmann, Luis and Nguyen, Khue M. and Eckhoff, Leonard and\n             Kohleick, Leonhard and {Abou Ghaloun}, Sedra and Schmidt, Hannah and\n             Hegselmann, Stefan and Theis, Fabian J. and B{\\\"u}rgel, Thore and\n             Steinfeldt, Jakob and Wild, Benjamin and Eils, Roland},\n  title   = {An interpretable omnigenic neural network architecture for the human genome},\n  journal = {medRxiv},\n  year    = {2026},\n  doi     = {10.64898/2026.07.28.26359187},\n}", "buergel2026": "@article{buergel2026,\n  author  = {B{\\\"u}rgel, Thore and Loock, Lukas and Steinfeldt, Jakob and Kronenberg, Noel and\n             Hoffmann, Laura and K{\\\"u}nzel, Steffen Emil and\n             {Upmeier zu Belzen}, Julius and Arnoldt, Lucas and Khawaja, Anthony P. and\n             Luben, Robert and Foster, Paul J. and Langenberg, Claudia and\n             Landmesser, Ulf and Deanfield, John and Zeitz, Oliver and\n             Joussen, Antonia M. and Pietzner, Maik and Wild, Benjamin and Eils, Roland},\n  title   = {A predictive atlas of disease onset from retinal fundus photographs: a modelling study using data from population-based cohorts},\n  journal = {The Lancet Digital Health},\n  year    = {2026},\n  volume  = {8},\n  number  = {3},\n  pages   = {100962},\n  doi     = {10.1016/j.landig.2025.100962},\n}", "arnoldt2025": "@misc{arnoldt2025,\n  author  = {Arnoldt, Lucas and {Upmeier zu Belzen}, Julius and Herrmann, Luis and\n             Nguyen, Khue and Ishaque, Naveed and Theis, Fabian J. and Wild, Benjamin and\n             Eils, Roland},\n  title   = {Biologically informed variational inference enables interpretable cell phenotyping and discovery},\n  journal = {bioRxiv},\n  year    = {2025},\n  doi     = {10.1101/2025.06.10.657924},\n}", "steinfeldt2025": "@article{steinfeldt2025,\n  author  = {Steinfeldt, Jakob and Wild, Benjamin and B{\\\"u}rgel, Thore and Pietzner, Maik and\n             {Upmeier zu Belzen}, Julius and Vauvelle, Andre and Hegselmann, Stefan and\n             Denaxas, Spiros and Hemingway, Harry and Langenberg, Claudia and\n             Landmesser, Ulf and Deanfield, John and Eils, Roland},\n  title   = {Medical history predicts phenome-wide disease onset and enables the rapid response to emerging health threats},\n  journal = {Nature Communications},\n  year    = {2025},\n  volume  = {16},\n  number  = {1},\n  pages   = {585},\n  doi     = {10.1038/s41467-025-55879-x},\n}", "heumos2024": "@article{heumos2024,\n  author  = {Heumos, Lukas and Ehmele, Philipp and Treis, Tim and\n             {Upmeier zu Belzen}, Julius and Roellin, Eljas and May, Lilly and\n             Namsaraeva, Altana and Horlava, Nastassya and Shitov, Vladimir A. and\n             Zhang, Xinyue and Zappia, Luke and Knoll, Rainer and Lang, Niklas J. and\n             Hetzel, Leon and Virshup, Isaac and Sikkema, Lisa and Curion, Fabiola and\n             Eils, Roland and Schiller, Herbert B. and Hilgendorff, Anne and\n             Theis, Fabian J.},\n  title   = {An open-source framework for end-to-end analysis of electronic health record data},\n  journal = {Nature Medicine},\n  year    = {2024},\n  volume  = {30},\n  number  = {11},\n  pages   = {3369--3380},\n  doi     = {10.1038/s41591-024-03214-0},\n}", "wild2024": "@inproceedings{wild2024,\n  author  = {Wild, Benjamin and {Upmeier zu Belzen}, Julius and Herrmann, Luis and\n             Kittner, Paul and Eils, Roland},\n  title   = {DNA language models identify variants predictive across the human phenome},\n  booktitle = {MLGenX Workshop at the International Conference on Learning Representations},\n  year    = {2024},\n  url     = {https://openreview.net/pdf?id=VyM7Voux5b},\n}", "buergel2022": "@article{buergel2022,\n  author  = {B{\\\"u}rgel, Thore and Steinfeldt, Jakob and Ruyoga, Greg and Pietzner, Maik and\n             Bizzarri, Daniele and Vojinovic, Dina and {Upmeier zu Belzen}, Julius and\n             Loock, Lukas and Kittner, Paul and Christmann, Lara and Hollmann, Noah and\n             Strangalies, Henrik and Braunger, Jana M. and Wild, Benjamin and\n             Chiesa, Scott T. and Spranger, Joachim and Klostermann, Fabian and\n             {van den Akker}, Erik B. and Trompet, Stella and Mooijaart, Simon P. and\n             Sattar, Naveed and Jukema, J. Wouter and Lavrijssen, Birgit and\n             Kavousi, Maryam and Ghanbari, Mohsen and Ikram, Mohammad A. and\n             Slagboom, Eline and Kivimaki, Mika and Langenberg, Claudia and\n             Deanfield, John and Eils, Roland and Landmesser, Ulf},\n  title   = {Metabolomic profiles predict individual multidisease outcomes},\n  journal = {Nature Medicine},\n  year    = {2022},\n  volume  = {28},\n  number  = {11},\n  pages   = {2309--2320},\n  doi     = {10.1038/s41591-022-01980-3},\n}", "steinfeldt2022": "@article{steinfeldt2022,\n  author  = {Steinfeldt, Jakob and B{\\\"u}rgel, Thore and Loock, Lukas and Kittner, Paul and\n             Ruyoga, Greg and {Upmeier zu Belzen}, Julius and Sasse, Simon and\n             Strangalies, Henrik and Christmann, Lara and Hollmann, Noah and\n             Wolf, Benedict and Ference, Brian and Deanfield, John and Landmesser, Ulf and\n             Eils, Roland},\n  title   = {Neural network-based integration of polygenic and clinical information: development and validation of a prediction model for 10-year risk of major adverse cardiac events in the UK Biobank cohort},\n  journal = {The Lancet Digital Health},\n  year    = {2022},\n  volume  = {4},\n  number  = {2},\n  pages   = {e84--e94},\n  doi     = {10.1016/S2589-7500(21)00249-1},\n}", "hoffmann2021": "@article{hoffmann2021,\n  author  = {Hoffmann, Mareike D. and Mathony, Jan and {Upmeier zu Belzen}, Julius and\n             Harteveld, Zander and Aschenbrenner, Sabine and Stengl, Christina and\n             Grimm, Dirk and Correia, Bruno E. and Eils, Roland and Niopek, Dominik},\n  title   = {Optogenetic control of Neisseria meningitidis Cas9 genome editing using an engineered, light-switchable anti-CRISPR protein},\n  journal = {Nucleic Acids Research},\n  year    = {2021},\n  volume  = {49},\n  number  = {5},\n  pages   = {e29},\n  doi     = {10.1093/nar/gkaa1198},\n}", "hekler2020": "@article{hekler2020,\n  author  = {Hekler, Achim and Kather, Jakob N. and Krieghoff-Henning, Eva and\n             Utikal, Jochen S. and Meier, Friedegund and Gellrich, Frank F. and\n             {Upmeier zu Belzen}, Julius and French, Lars and Schlager, Justin G. and\n             Ghoreschi, Kamran and Wilhelm, Tabea and Kutzner, Heinz and\n             Berking, Carola and Heppt, Markus V. and Haferkamp, Sebastian and\n             Sondermann, Wiebke and Schadendorf, Dirk and Schilling, Bastian and\n             Izar, Benjamin and Maron, Roman and Schmitt, Max and Fr{\\\"o}hling, Stefan and\n             Lipka, Daniel B. and Brinker, Titus J.},\n  title   = {Effects of label noise on deep learning-based skin cancer classification},\n  journal = {Frontiers in Medicine},\n  year    = {2020},\n  volume  = {7},\n  pages   = {177},\n  doi     = {10.3389/fmed.2020.00177},\n}", "mathony2020": "@article{mathony2020,\n  author  = {Mathony, Jan and Harteveld, Zander and Schmelas, Carolin and\n             {Upmeier zu Belzen}, Julius and Aschenbrenner, Sabine and Sun, Wei and\n             Hoffmann, Mareike D. and Stengl, Christina and Scheck, Andreas and\n             Georgeon, Sandrine and Rosset, St{\\'e}phane and Wang, Yanli and\n             Grimm, Dirk and Eils, Roland and Correia, Bruno E. and Niopek, Dominik},\n  title   = {Computational design of anti-CRISPR proteins with improved inhibition potency},\n  journal = {Nature Chemical Biology},\n  year    = {2020},\n  volume  = {16},\n  number  = {7},\n  pages   = {725--730},\n  doi     = {10.1038/s41589-020-0518-9},\n}", "upmeier2019": "@article{upmeier2019,\n  author  = {{Upmeier zu Belzen}, Julius and B{\\\"u}rgel, Thore and Holderbach, Stefan and\n             Bubeck, Felix and Adam, Lukas and Gandor, Catharina and Klein, Marita and\n             Mathony, Jan and Pfuderer, Pauline and Platz, Lukas and Przybilla, Moritz and\n             Schwendemann, Max and Heid, Daniel and Hoffmann, Mareike Daniela and\n             Jendrusch, Michael and Schmelas, Carolin and Waldhauer, Max and\n             Lehmann, Irina and Niopek, Dominik and Eils, Roland},\n  title   = {Leveraging implicit knowledge in neural networks for functional dissection and engineering of proteins},\n  journal = {Nature Machine Intelligence},\n  year    = {2019},\n  volume  = {1},\n  number  = {5},\n  pages   = {225--235},\n  doi     = {10.1038/s42256-019-0049-9},\n}"}</script>
+<script>
+(function () {
+  var store = null;
+  function bib() {
+    if (store === null) {
+      try { store = JSON.parse(document.getElementById("bibdata").textContent); }
+      catch (e) { store = {}; }
+    }
+    return store;
+  }
+  document.addEventListener("click", function (ev) {
+    var a = ev.target.closest && ev.target.closest("a[data-copy], a[data-bib]");
+    if (!a || !navigator.clipboard) return;
+    var text = a.dataset.copy || bib()[a.dataset.bib];
+    if (!text) return;
+    ev.preventDefault();
+    navigator.clipboard.writeText(text).then(function () {
+      var was = a.textContent;
+      a.textContent = "copied";
+      setTimeout(function () { a.textContent = was; }, 1200);
+    });
+  });
+})();
+</script>
+</body>
+</html>
